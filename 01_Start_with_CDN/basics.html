@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Start with CDN</title>
+</head>
+<body>
+  <div class="root"></div>
+  <!-- CDN for React, ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- CDN for Babel -->
+  <!-- In addition to the React and ReactDOM we need babel to transpile the JSX to JavaScript code. -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    /**
+    * Check if React is linked to the basics.html
+    */
+    console.log(React);
+
+    const rootElement = document.querySelector('.root');
+    // const jsxElement = <h1>Welcome to 30 Days Of React</h1>;
+
+    const headerStyle = { border: '2px solid orange', color: 'black', fontSize: '18px' };
+    const header = (
+      /** or
+       * <header style={{ border: '2px solid orange', color: 'black', fontSize: '18px' }}>
+       */
+      <header style={headerStyle}>
+        <h1>Welcome to 30 Days Of React</h1>
+        <h2>Getting Started React</h2>
+        <h3>JavaScript Library</h3>
+        <p>KyungJin Jung</p>
+        <small>Sep 29, 2022</small>
+      </header>
+    );
+
+    const mainStyles = { backgroundColor: '#F3F0F5' };
+    const main = (
+      <main style={mainStyles}>
+        <p>Prerequisite to get started react.js:</p>
+        <ul className="app">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
+      </main>
+    );
+
+    const footer = (
+      <footer>
+        <p>Copyright 2022</p>
+      </footer>
+    );
+
+    // JSX element which contain all, it is a container or parent
+    const app = (
+      <div>
+        {header}
+        {main}
+        {footer}
+      </div>
+    );
+
+    /** or
+     * ReactDOM.render([header, main, footer], rootElement)
+     */
+    ReactDOM.render(app, rootElement);
+  </script>
+</body>
+</html>
