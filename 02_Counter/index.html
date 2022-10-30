@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Counter</title>
+</head>
+<body>
+<div id="root"></div>
+<!-- CDN for React, ReactDOM -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<!-- CDN for Babel -->
+<!-- In addition to the React and ReactDOM we need babel to transpile the JSX to JavaScript code. -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const App = () => {
+    const [counter, setCounter] = React.useState(0);
+    const countUp = () => {
+      setCounter(counter + 1);
+    };
+
+    return (
+      <div>
+        <h2>Total clicks: {counter}</h2>
+        <button onClick={countUp}>Click Me</button>
+      </div>
+    );
+  };
+
+  ReactDOM
+    .createRoot(document.querySelector('#root'))
+    .render(<App />)
+</script>
+</body>
+</html>
