@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
-import Detail from './pages/Detail';
+import ItemList from './pages/ItemList';
+import ItemDetail from './pages/ItemDetail';
 
 const App = () => {
   return (
@@ -11,7 +12,8 @@ const App = () => {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/items" element={<ItemList />} />
+        <Route path="/items/:itemId" element={<ItemDetail />} />
       </Routes>
     </BrowserRouter>
   );
