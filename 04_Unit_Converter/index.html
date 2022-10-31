@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Unit Converter</title>
+</head>
+<body>
+<div id="root"></div>
+<!-- CDN for React, ReactDOM -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<!-- CDN for Babel -->
+<!-- In addition to the React and ReactDOM we need babel to transpile the JSX to JavaScript code. -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const App = () => {
+    const [amount, setAmount] = React.useState(0);
+    const [flipped, setFlipped] = React.useState(false);
+
+    const onChange = (e) => setAmount(e.target.value);
+    const reset = () => setAmount(0);
+    const onFlip = () => {
+      reset();
+      setFlipped(current => !current);
+    };
+
+    return (
+      <div>
+        <h1>Unit Converter</h1>
+        <label htmlFor="minutes">Minutes</label>
+        <input
+          id="minutes"
+          value={flipped ? amount * 60 : amount}
+          placeholder="Minutes"
+          type="number"
+          disabled={flipped}
+          onChange={onChange} />
+
+        <label htmlFor="hours">Hours</label>
+        <input
+          id="hours"
+          value={flipped ? amount : Math.round(amount / 60)}
+          placeholder="Hours"
+          type="number"
+          disabled={!flipped}
+          onChange={onChange} />
+
+        <button onClick={reset}>Reset</button>
+        <button onClick={onFlip}>Flipped</button>
+      </div>
+    );
+  };
+
+  ReactDOM
+    .createRoot(document.querySelector('#root'))
+    .render(<App />);
+</script>
+</body>
+</html>
