@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Props</title>
+  <style>
+    .wrap > * {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<!-- CDN for React, ReactDOM -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<!-- CDN for Babel -->
+<!-- In addition to the React and ReactDOM we need babel to transpile the JSX to JavaScript code. -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const Button = ({ label, size }) => {
+    const fontSizeMapper = {
+      small: 14,
+      default: 16,
+      large: 18,
+    };
+
+    return (
+      <button
+        style={{
+          backgroundColor: 'tomato',
+          color: 'white',
+          padding: '10px 20px',
+          border: 0,
+          borderRadius: 10,
+          fontSize: size ? fontSizeMapper[size] : fontSizeMapper['default']
+        }}>
+        { label }
+      </button>
+    );
+  };
+
+  const App = () => {
+    return (
+      <div>
+        <h1>Basic Usage</h1>
+        <div className="wrap">
+          <Button label="Save Changes" />
+          <Button label="Confirm" />
+        </div>
+
+        <h1>size</h1>
+        <div className="wrap">
+          <Button label="small" size="small" />
+          <Button label="default" />
+          <Button label="large" size="large" />
+        </div>
+      </div>
+    );
+  };
+
+  ReactDOM
+    .createRoot(document.querySelector('#root'))
+    .render(<App />);
+</script>
+</body>
+</html>
